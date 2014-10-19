@@ -130,13 +130,6 @@ median(dat2_ag$steps)
 ```r
 dat$wd <- as.factor(weekdays(as.Date(dat$date, '%Y-%m-%d')))
 dat$f <- factor(dat$wd, labels = c("weekend", "weekday", "weekday", "weekday", "weekday", "weekday", "weekend"))
-```
-
-```
-## Warning: duplicated levels in factors are deprecated
-```
-
-```r
 dat$f2 <- factor(dat$f, levels = c("weekday", "weekend"))
 ```
 
@@ -147,17 +140,12 @@ dat$f2 <- factor(dat$f, levels = c("weekday", "weekend"))
 ```r
 wkday <- dat[dat$f2 == "weekday",]
 wkend <- dat[dat$f2 == "weekend",]
-#par(mfrow = c(2,1))
-with(wkday, plot(interval,steps, type="l"))
+par(mfrow = c(2,1))
+with(wkday, plot(interval,steps, type="l", main="Weekday"))
+with(wkend, plot(interval,steps, type="l", main="Weekend"))
 ```
 
-![plot of chunk unnamed-chunk-10](./PA1_template_files/figure-html/unnamed-chunk-101.png) 
-
-```r
-with(wkend, plot(interval,steps, type="l"))
-```
-
-![plot of chunk unnamed-chunk-10](./PA1_template_files/figure-html/unnamed-chunk-102.png) 
+![plot of chunk unnamed-chunk-10](./PA1_template_files/figure-html/unnamed-chunk-10.png) 
 
 
 
